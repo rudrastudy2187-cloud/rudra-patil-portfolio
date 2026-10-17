@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rudra Patil | Portfolio</title>
+
+<style>
+:root {
+  --navy: #102a43;
+  --blue: #2463a6;
+  --gold: #c79a45;
+  --light: #f4f7fb;
+  --text: #1e293b;
+  --muted: #617184;
+  --border: #dce5ee;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #eaf0f6;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.frame {
+  max-width: 1100px;
+  margin: 30px auto;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 45px #102a4314;
+}
+
+header {
+  padding: 18px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  color: var(--navy);
+  font-weight: 900;
+  font-size: 22px;
+  text-decoration: none;
+}
+
+.logo span { color: var(--gold); }
+
+nav {
+  display: flex;
+  gap: 22px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+nav a:hover { color: var(--blue); }
+
+.hero {
+  min-height: 480px;
+  padding: 90px 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background: linear-gradient(120deg, white, #edf4fc);
+}
+
+.eyebrow, .label {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+h1 {
+  font-size: clamp(55px, 8vw, 90px);
+  color: var(--navy);
+  line-height: 1;
+  letter-spacing: -4px;
+  margin: 20px 0;
+}
+
+h1 span, .shop-logo span { color: var(--blue); }
+
+.intro {
+  max-width: 480px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 11px 17px;
+  border: 1px solid var(--blue);
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.primary {
+  background: var(--blue);
+  color: white;
+}
+
+.primary:hover { background: var(--navy); }
+
+.secondary {
+  background: white;
+  color: var(--blue);
+}
+
+section.content {
+  padding: 65px 8%;
+  display: grid;
+  grid-template-columns: 155px 1fr;
+  gap: 30px;
+  border-top: 1px solid var(--border);
+}
+
+h2 {
+  color: var(--navy);
+  font-size: 29px;
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.skills, .contact { background: var(--light); }
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.skill {
+  padding: 17px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.skill span {
+  display: block;
+  color: var(--gold);
+  font-size: 10px;
+}
+
+.project {
+  padding: 22px;
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: white;
+}
+
+.project h3 { color: var(--navy); }
+
+.tag {
+  display: inline-block;
+  padding: 4px 9px;
+  background: #dceafa;
+  color: var(--blue);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* SHOP SECTION */
+
+.shop { background: #f7f9fc; }
+
+.shop-logo {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--blue);
+}
+
+.shop-hero {
+  margin: 20px 0;
+  padding: 45px 15px;
+  text-align: center;
+  background: linear-gradient(135deg, white, #eaf2fc);
+  border-radius: 8px;
+}
+
+.shop-hero h2 { margin: 10px 0; }
+
+.shop-hero h2 span { color: var(--blue); }
+
+.shop-hero p { font-size: 12px; }
+
+.shop-heading {
+  color: var(--navy);
+  margin: 25px 0 5px;
+  font-size: 20px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 15px 0 30px;
+}
+
+.category {
+  padding: 15px 5px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--navy);
+  font-weight: bold;
+}
+
+.category.active {
+  border: 2px solid var(--blue);
+}
+
+.category small {
+  display: block;
+  color: var(--muted);
+  font-weight: normal;
+  font-size: 10px;
+}
+
+.search {
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.product {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.product img {
+  width: 100%;
+  height: 145px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-info { padding: 12px; }
+
+.product-info small {
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: bold;
+}
+
+.product-info h4 {
+  color: var(--navy);
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+.product-info p {
+  font-size: 11px;
+  min-height: 40px;
+}
+
+.price {
+  color: var(--navy);
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.add {
+  width: 100%;
+  padding: 9px 5px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--blue);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add:hover { background: var(--navy); }
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 20px;
+  margin-top: 35px;
+  padding-top: 25px;
+  border-top: 1px solid var(--border);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 12px;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.remove {
+  background: white;
+  color: #a33;
+  border: 1px solid var(--border);
+  padding: 4px 7px;
+  cursor: pointer;
+}
+
+.summary {
+  padding: 18px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  align-self: start;
+}
+
+.summary h3 { color: var(--navy); }
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+
+.summary .btn {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.checkout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 22px;
+  margin-top: 25px;
+  background: #eaf2fc;
+  border-radius: 7px;
+}
+
+.checkout form {
+  padding: 18px;
+  background: white;
+  border-radius: 6px;
+}
+
+.checkout h3 { color: var(--navy); }
+
+label {
+  display: block;
+  font-size: 11px;
+  font-weight: bold;
+  margin: 12px 0 5px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font: inherit;
+  font-size: 12px;
+}
+
+form button { margin-top: 15px; }
+
+#shop-status, #checkout-status, #contact-status {
+  margin-top: 12px;
+  font-size: 12px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+footer {
+  padding: 24px 6%;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+@media (max-width: 700px) {
+  .frame { margin: 0; border: 0; border-radius: 0; }
+  header { padding: 15px 4%; }
+  nav { gap: 10px; }
+  nav a { font-size: 10px; }
+  .hero { padding: 75px 7%; }
+  h1 { letter-spacing: -3px; }
+  section.content {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 45px 7%;
+  }
+  .skill-grid { grid-template-columns: repeat(2, 1fr); }
+  .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .product img { height: 155px; }
+  .cart-layout, .checkout, .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  footer { flex-wrap: wrap; }
+}
+
+@media (max-width: 380px) {
+  nav { gap: 7px; }
+  nav a { font-size: 9px; }
+  .skill-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+<div class="frame">
+
+<header>
+  <a class="logo" href="#home">RUDRA<span>.</span></a>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#shop">Shop</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section class="hero" id="home">
+  <div class="eyebrow">STUDENT · ASPIRING DEVELOPER</div>
+  <h1>Rudra<br>Patil<span>.</span></h1>
+  <p class="intro">
+    I create clean, accessible, and user-friendly digital experiences
+    while building my skills in modern web development.
+  </p>
+  <div class="buttons">
+    <a class="btn primary" href="#projects">Explore Projects ↗</a>
+    <a class="btn secondary" href="#contact">Get in Touch</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="content" id="about">
+  <div class="label">01 / ABOUT ME</div>
+  <div>
+    <h2>Focused on learning.<br>Driven to create.</h2>
+    <p>
+      Hello, I'm <strong>Rudra Patil</strong>, a student with an interest
+      in technology and web development. I enjoy learning how digital
+      products are designed and built.
+    </p>
+    <p>
+      My goal is to create websites that look professional, work
+      smoothly across devices, and make information easy to understand.
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="content skills" id="skills">
+  <div class="label">02 / SKILLS</div>
+  <div>
+    <h2>Tools & Technologies</h2>
+    <p>Technologies I am learning and practising.</p>
+    <div class="skill-grid">
+      <div class="skill"><span>01</span>HTML & CSS</div>
+      <div class="skill"><span>02</span>Java</div>
+      <div class="skill"><span>03</span>JavaScript</div>
+      <div class="skill"><span>04</span>Responsive Design</div>
+      <div class="skill"><span>05</span>Spring Boot</div>
+      <div class="skill"><span>06</span>Problem Solving</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="content" id="projects">
+  <div class="label">03 / PROJECTS</div>
+  <div>
+    <h2>Selected Work</h2>
+    <p>Some project concepts I am developing and practising.</p>
+
+    <article class="project">
+      <h3>Personal Portfolio</h3>
+      <p>A responsive website introducing my skills and projects.</p>
+      <span class="tag">HTML · CSS · JavaScript</span>
+    </article>
+
+    <article class="project">
+      <h3>Student Task Tracker</h3>
+      <p>A concept for organising assignments and study goals.</p>
+      <span class="tag">Java</span>
+    </article>
+
+    <article class="project">
+      <h3>Online Shopping Website</h3>
+      <p>A storefront with product cards, categories, and a cart.</p>
+      <span class="tag">Web Development</span>
+    </article>
+  </div>
+</section>
+
+<!-- SHOPEASY -->
+<section class="content shop" id="shop">
+  <div class="label">04 / SHOP EASY</div>
+  <div>
+    <div class="shop-logo">ShopEasy<span>.</span></div>
+
+    <div class="shop-hero">
+      <div class="eyebrow">WELCOME TO SHOPEASY</div>
+      <h2>Everything You Need,<br>In One <span>Place.</span></h2>
+      <p>Discover quality products for everyday life.</p>
+      <a href="#products" class="btn primary">Explore Products ↓</a>
+    </div>
+
+    <h3 class="shop-heading">Shop by Category</h3>
+    <p>Find your favourites.</p>
+
+    <div class="categories">
+      <button class="category active" data-category="All">
+        ✦<br>All Products<small>Browse everything</small>
+      </button>
+      <button class="category" data-category="Electronics">
+        ⌁<br>Electronics<small>Tech essentials</small>
+      </button>
+      <button class="category" data-category="Fashion">
+        ◇<br>Fashion<small>Everyday style</small>
+      </button>
+    </div>
+
+    <h3 class="shop-heading" id="products">Featured Products</h3>
+    <input class="search" id="search" placeholder="Search products...">
+
+    <div class="products" id="product-list">
+
+      <article class="product" data-category="Electronics"
+               data-name="Wireless Headphones">
+        <img
+          src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=85"
+          alt="Wireless headphones">
+        <div class="product-info">
+          <small>ELECTRONICS</small>
+          <h4>Wireless Headphones</h4>
+          <p>Comfortable sound for every day.</p>
+          <div class="price">₹1,499</div>
+          <button class="add" data-name="Wireless Headphones"
+                  data-price="1499">Add to Cart +</button>
+        </div>
+      </article>
+
+      <article class="product" data-category="Electronics"
+               data-name="Smart Watch">
+        <img
+          src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85"
+          alt="Smart watch">
+        <div class="product-info">
+          <small>ELECTRONICS</small>
+          <h4>Smart Watch</h4>
+          <p>A smart companion on the go.</p>
+          <div class="price">₹2,499</div>
+          <button class="add" data-name="Smart Watch"
+                  data-price="2499">Add to Cart +</button>
+        </div>
+      </article>
+
+      <article class="product" data-category="Electronics"
+               data-name="Bluetooth Speaker">
+        <img
+          src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=700&q=85"
+          alt="Bluetooth speaker">
+        <div class="product-info">
+          <small>ELECTRONICS</small>
+          <h4>Bluetooth Speaker</h4>
+          <p>Bring your music along.</p>
+          <div class="price">₹999</div>
+          <button class="add" data-name="Bluetooth Speaker"
+                  data-price="999">Add to Cart +</button>
+        </div>
+      </article>
+
+      <article class="product" data-category="Fashion"
+               data-name="Classic T-Shirt">
+        <img
+          src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85"
+          alt="Classic T-shirt">
+        <div class="product-info">
+          <small>FASHION</small>
+          <h4>Classic T-Shirt</h4>
+          <p>A versatile everyday essential.</p>
+          <div class="price">₹599</div>
+          <button class="add" data-name="Classic T-Shirt"
+                  data-price="599">Add to Cart +</button>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- SHOPPING CART -->
+    <div class="cart-layout" id="cart">
+      <div>
+        <h3 class="shop-heading">Shopping Cart</h3>
+        <p>Review the products you add.</p>
+        <div id="cart-items">Your cart is empty.</div>
+      </div>
+
+      <aside class="summary">
+        <h3>Order Summary</h3>
+        <div class="summary-row">
+          <span>Items</span><b id="item-count">0</b>
+        </div>
+        <div class="summary-row">
+          <span>Delivery</span><b>FREE</b>
+        </div>
+        <div class="summary-row">
+          <span>Total</span><b id="total">₹0</b>
+        </div>
+        <button class="btn primary" id="checkout-button">
+          Continue to Checkout
+        </button>
+        <p id="shop-status"></p>
+      </aside>
+    </div>
+
+    <!-- DEMO CHECKOUT -->
+    <div class="checkout" id="checkout">
+      <div>
+        <h3>Checkout</h3>
+        <p>This is a demo checkout form.</p>
+        <form id="checkout-form">
+          <label for="buyer-name">FULL NAME</label>
+          <input id="buyer-name" required placeholder="Your name">
+
+          <label for="buyer-address">DELIVERY ADDRESS</label>
+          <input id="buyer-address" required placeholder="Street and city">
+
+          <label for="buyer-phone">PHONE NUMBER</label>
+          <input id="buyer-phone" type="tel" required
+                 placeholder="Your phone number">
+
+          <button class="btn primary" type="submit">
+            Place Demo Order ↗
+          </button>
+          <p id="checkout-status"></p>
+        </form>
+      </div>
+
+      <div>
+        <h3 class="shop-heading">Good finds.<br>Easy shopping.</h3>
+        <p>
+          This is a demonstration store. No payment is collected and
+          no real order is placed.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="content contact" id="contact">
+  <div class="label">05 / CONTACT</div>
+  <div class="contact-grid">
+    <div>
+      <h2>Let's Connect.</h2>
+      <p>
+        Have a question, an idea, or an opportunity to discuss?
+        Send me a message through this form.
+      </p>
+      <p><strong>Rudra Patil</strong><br>
+      Student · Aspiring Developer</p>
+    </div>
+
+    <form id="contact-form">
+      <label for="name">FULL NAME</label>
+      <input id="name" required placeholder="Enter your name">
+
+      <label for="email">EMAIL ADDRESS</label>
+      <input id="email" type="email" required
+             placeholder="name@example.com">
+
+      <label for="subject">SUBJECT</label>
+      <input id="subject" placeholder="What is this about?">
+
+      <label for="message">MESSAGE</label>
+      <textarea id="message" rows="4" required
+                placeholder="Write your message..."></textarea>
+
+      <button class="btn primary" type="submit">Send Message ↗</button>
+      <p id="contact-status"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <a class="logo" href="#home">RUDRA<span>.</span></a>
+  <span>© <span id="year"></span> Rudra Patil</span>
+  <a href="#home">Back to top ↑</a>
+</footer>
+
+</div>
+
+<script>
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+// Shopping cart
+const cart = [];
+
+const formatPrice = amount =>
+  "₹" + amount.toLocaleString("en-IN");
+
+function renderCart() {
+  const container = document.getElementById("cart-items");
+
+  const count = cart.reduce((sum, item) => sum + item.qty, 0);
+  const total = cart.reduce(
+    (sum, item) => sum + item.price * item.qty, 0
+  );
+
+  document.getElementById("item-count").textContent = count;
+  document.getElementById("total").textContent = formatPrice(total);
+
+  if (cart.length === 0) {
+    container.textContent = "Your cart is empty.";
+    return;
+  }
+
+  container.innerHTML = "";
+
+  cart.forEach((item, index) => {
+    const row = document.createElement("div");
+    row.className = "cart-item";
+
+    const details = document.createElement("span");
+    details.textContent =
+      `${item.name} × ${item.qty} — ${formatPrice(item.price * item.qty)}`;
+
+    const remove = document.createElement("button");
+    remove.className = "remove";
+    remove.textContent = "Remove";
+
+    remove.addEventListener("click", () => {
+      cart.splice(index, 1);
+      renderCart();
+    });
+
+    row.append(details, remove);
+    container.appendChild(row);
+  });
+}
+
+document.querySelectorAll(".add").forEach(button => {
+  button.addEventListener("click", () => {
+    const name = button.dataset.name;
+    const price = Number(button.dataset.price);
+
+    const existing = cart.find(item => item.name === name);
+
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({ name, price, qty: 1 });
+    }
+
+    document.getElementById("shop-status").textContent =
+      name + " added to your cart.";
+
+    renderCart();
+  });
+});
+
+// Category filters
+document.querySelectorAll(".category").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".category").forEach(category => {
+      category.classList.toggle("active", category === button);
+    });
+
+    filterProducts();
+  });
+});
+
+// Product search
+document.getElementById("search").addEventListener("input", filterProducts);
+
+function filterProducts() {
+  const category =
+    document.querySelector(".category.active").dataset.category;
+
+  const query = document.getElementById("search").value.toLowerCase();
+
+  document.querySelectorAll(".product").forEach(product => {
+    const categoryMatch =
+      category === "All" || product.dataset.category === category;
+
+    const searchMatch =
+      product.dataset.name.toLowerCase().includes(query);
+
+    product.style.display =
+      categoryMatch && searchMatch ? "" : "none";
+  });
+}
+
+// Demo checkout
+document.getElementById("checkout-button").addEventListener("click", () => {
+  if (cart.length === 0) {
+    document.getElementById("shop-status").textContent =
+      "Please add a product to your cart first.";
+    return;
+  }
+
+  document.getElementById("checkout").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  document.getElementById("checkout-status").textContent =
+    "Cart total: " + document.getElementById("total").textContent;
+});
+
+document.getElementById("checkout-form").addEventListener("submit", event => {
+  event.preventDefault();
+
+  if (cart.length === 0) {
+    document.getElementById("checkout-status").textContent =
+      "Your cart is empty. Add a product first.";
+    return;
+  }
+
+  const name = document.getElementById("buyer-name").value;
+  const total = document.getElementById("total").textContent;
+
+  document.getElementById("checkout-status").textContent =
+    `Thank you, ${name}! Demo order placed for ${total}. No payment was taken.`;
+
+  cart.length = 0;
+  renderCart();
+  event.target.reset();
+});
+
+// Contact form demo
+document.getElementById("contact-form").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value;
+
+  document.getElementById("contact-status").textContent =
+    `Thank you, ${name}! This demo form does not send email.`;
+
+  event.target.reset();
+});
+</script>
+</body>
+</html>
